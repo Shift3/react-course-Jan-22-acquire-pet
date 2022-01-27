@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./carousel.css";
 
 class Carousel extends Component {
   state = { active: 0 };
@@ -7,20 +8,27 @@ class Carousel extends Component {
     images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
+  handleIndexClick = (event) => {
+    this.setState({ active: +event.target.dataset.index });
+    console.log(this.state);
+  };
+
   render() {
     const { active } = this.state;
     const { images } = this.props;
 
     return (
-      <div>
+      <div className="carousel">
         <img src={images[active]} alt="animal" />
-        <div>
+        <div className="carousel-smaller">
           {images.map((photo, idx) => (
             <img
               key={idx}
               src={photo}
               alt="animal thumbnail"
               className={idx === active ? "active" : ""}
+              onClick={this.handleIndexClick}
+              data-index={idx}
             />
           ))}
         </div>
