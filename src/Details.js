@@ -1,8 +1,36 @@
-import { useParams } from "react-router-dom";
+import { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-const Details = () => {
-  const { id } = useParams();
-  return <h2>Pet id: {id}</h2>;
-};
+class Details extends Component {
+  constructor() {
+    super();
+    this.state = { loading: true };
+  }
 
-export default Details;
+  async componentDidMount() {
+    const result = await fetch(
+      `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
+    );
+    const json = await result.json();
+    this.setState({ loading: false, ...json.pets[0] });
+  }
+
+  render() {
+    if (this.state.loading) {
+      return <h2>loading...</h2>;
+    }
+
+    const { animal, breed, city, state, description, name } = this.state;
+
+    return (
+      <div>
+        <h1>{name}</h1>
+        <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
+        <p>{description}</p>
+        <button>Acquire {name}</button>
+      </div>
+    );
+  }
+}
+
+export default withRouter(Details);
