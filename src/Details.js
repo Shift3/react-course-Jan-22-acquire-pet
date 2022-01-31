@@ -22,7 +22,8 @@ class Details extends Component {
     const { animal, breed, city, state, description, name, images } =
       this.state;
 
-    throw new Error("Something wrong");
+    //throw new Error("Something wrong");
+
     return (
       <div>
         <h1>{name}</h1>
