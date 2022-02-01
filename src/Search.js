@@ -81,7 +81,7 @@ const Search = () => {
           </select>
         </label>
 
-        <label htmlFro="theme">
+        <label htmlFor="theme">
           Theme
           <select
             value={theme}
