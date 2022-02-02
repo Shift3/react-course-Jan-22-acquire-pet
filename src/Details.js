@@ -54,7 +54,7 @@ class Details extends Component {
           {([theme]) => (
             <button
               onClick={this.toggleModal}
-              style={{ backgroundColor: theme }}
+              style={{ backgroundColor: theme, cursor: "pointer" }}
             >
               Acquire {name}
             </button>

@@ -10,7 +10,7 @@ const Search = () => {
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
   const [pets, setPets] = useState([]);
-  const [location, setLocation] = useState("Toledo, OH");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [breeds] = useBreedList(animal);
@@ -97,7 +97,7 @@ const Search = () => {
         <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
 
-      <Results pets={pets} />
+      <Results className="results" pets={pets} />
     </div>
   );
 };
