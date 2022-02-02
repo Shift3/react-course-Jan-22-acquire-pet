@@ -12,8 +12,10 @@ const App = () => {
     <ThemeContext.Provider value={theme}>
       <div>
         <Router>
-          <header>
-            <Link to="/">Acquire new Pet</Link>
+          <header style={{ textAlign: "center", marginBottom: "5rem" }}>
+            <Link style={{ textDecoration: "none", color: "red" }} to="/">
+              <h1>Acquire new Pet</h1>
+            </Link>
           </header>
           <Switch>
             <Route path="/details/:id">

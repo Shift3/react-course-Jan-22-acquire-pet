@@ -1,0 +1,28 @@
+.petContainer {
+  display: grid;
+  grid-template-columns: minmax(5rem, min-content) 2fr;
+  grid-gap: 2rem;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: burlywood;
+  background-color: cornsilk;
+  margin-bottom: 2rem;
+}
+
+.petContainer__img {
+  grid-column: 1 / 2;
+  justify-self: center;
+  align-self: center;
+}
+
+.petContainer__img > img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  display: block;
+  object-fit: fill;
+}
+
+.petContainer__details {
+  grid-column: 2 / -1;
+}

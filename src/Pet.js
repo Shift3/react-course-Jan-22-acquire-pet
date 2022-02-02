@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./pet.css";
 
 const Pet = (props) => {
   const { name, animal, breed, images, location, id } = props;
@@ -9,11 +10,11 @@ const Pet = (props) => {
   }
 
   return (
-    <Link to={`/details/${id}`}>
-      <div>
+    <Link to={`/details/${id}`} className="petContainer">
+      <div className="petContainer__img">
         <img src={defaultImg} alt={name} />
       </div>
-      <div>
+      <div className="petContainer__details">
         <h1>{name}</h1>
         <h2>{`${animal} - ${breed} - ${location}`}</h2>
       </div>
