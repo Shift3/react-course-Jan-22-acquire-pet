@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, StrictMode } from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Search from "./Search";
@@ -31,4 +31,9 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
