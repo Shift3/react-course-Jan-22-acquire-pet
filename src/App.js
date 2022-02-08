@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Search from "./Search";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
+import StateComponent from "./components/State.Component";
 
 const App = () => {
   const theme = useState("blue");
@@ -20,6 +21,9 @@ const App = () => {
           <Switch>
             <Route path="/details/:id">
               <Details />
+            </Route>
+            <Route path="/state">
+              <StateComponent />
             </Route>
             <Route path="/">
               <Search />
