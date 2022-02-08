@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Search from "./Search";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
-import StateComponent from "./components/State.Component";
+import StateComponent from "./components/StateComponent";
+import EffectComponent from "./components/EffectComponent";
 
 const App = () => {
   const theme = useState("blue");
@@ -24,6 +25,9 @@ const App = () => {
             </Route>
             <Route path="/state">
               <StateComponent />
+            </Route>
+            <Route path="/effect">
+              <EffectComponent />
             </Route>
             <Route path="/">
               <Search />
