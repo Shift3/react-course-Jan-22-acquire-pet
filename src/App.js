@@ -9,6 +9,7 @@ import EffectComponent from "./components/EffectComponent";
 import ContextComponent from "./components/ContextComponent";
 import RefComponent from "./components/RefComponent";
 import ReducerComponent from "./components/ReducerComponent";
+import MemoComponent from "./components/MemoComponent";
 const App = () => {
   const theme = useState("blue");
 
@@ -39,6 +40,9 @@ const App = () => {
             </Route>
             <Route path="/reducer">
               <ReducerComponent />
+            </Route>
+            <Route path="/memo">
+              <MemoComponent />
             </Route>
             <Route path="/">
               <Search />
