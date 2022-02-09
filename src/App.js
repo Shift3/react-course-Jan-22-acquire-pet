@@ -8,6 +8,7 @@ import StateComponent from "./components/StateComponent";
 import EffectComponent from "./components/EffectComponent";
 import ContextComponent from "./components/ContextComponent";
 import RefComponent from "./components/RefComponent";
+import ReducerComponent from "./components/ReducerComponent";
 const App = () => {
   const theme = useState("blue");
 
@@ -35,6 +36,9 @@ const App = () => {
             </Route>
             <Route path="/ref">
               <RefComponent />
+            </Route>
+            <Route path="/reducer">
+              <ReducerComponent />
             </Route>
             <Route path="/">
               <Search />
