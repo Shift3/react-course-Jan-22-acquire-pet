@@ -4,7 +4,13 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Search from "./Search";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
-
+import StateComponent from "./components/StateComponent";
+import EffectComponent from "./components/EffectComponent";
+import ContextComponent from "./components/ContextComponent";
+import RefComponent from "./components/RefComponent";
+import ReducerComponent from "./components/ReducerComponent";
+import MemoComponent from "./components/MemoComponent";
+import CallbackComponent from "./components/CallbackComponent";
 const App = () => {
   const theme = useState("blue");
 
@@ -20,6 +26,27 @@ const App = () => {
           <Switch>
             <Route path="/details/:id">
               <Details />
+            </Route>
+            <Route path="/state">
+              <StateComponent />
+            </Route>
+            <Route path="/effect">
+              <EffectComponent />
+            </Route>
+            <Route path="/context">
+              <ContextComponent />
+            </Route>
+            <Route path="/ref">
+              <RefComponent />
+            </Route>
+            <Route path="/reducer">
+              <ReducerComponent />
+            </Route>
+            <Route path="/memo">
+              <MemoComponent />
+            </Route>
+            <Route path="/callback">
+              <CallbackComponent />
             </Route>
             <Route path="/">
               <Search />
