@@ -1,8 +1,8 @@
 import { Component, lazy } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "./ThemeContext";
 const Modal = lazy(() => import("./Modal"));
 
 class Details extends Component {
@@ -50,23 +50,21 @@ class Details extends Component {
           </Modal>
         ) : null}
         <Carousel images={images} />
-        <ThemeContext.Consumer>
-          {([theme]) => (
-            <button
-              onClick={this.toggleModal}
-              style={{ backgroundColor: theme, cursor: "pointer" }}
-            >
-              Acquire {name}
-            </button>
-          )}
-        </ThemeContext.Consumer>
+
+        <button
+          onClick={this.toggleModal}
+          style={{ backgroundColor: this.props.theme, cursor: "pointer" }}
+        >
+          Acquire {name}
+        </button>
       </div>
     );
   }
 }
 
-//export default withRouter(Details);
-const DetailsWithRouter = withRouter(Details);
+const mapStateToProps = ({ theme }) => ({ theme });
+const ReduxWrappedDetails = connect(mapStateToProps)(Details);
+const DetailsWithRouter = withRouter(ReduxWrappedDetails);
 
 export default function DetailsErrorBoundary(props) {
   return (

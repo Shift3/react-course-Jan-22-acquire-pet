@@ -1,7 +1,8 @@
 import { useState, StrictMode, lazy, Suspense } from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import ThemeContext from "./ThemeContext";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const StateComponent = lazy(() => import("./components/StateComponent"));
 const EffectComponent = lazy(() => import("./components/EffectComponent"));
@@ -17,7 +18,7 @@ const App = () => {
   const theme = useState("blue");
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <Provider store={store}>
       <div>
         <Suspense fallback="<h1>loading route...</h1>">
           <Router>
@@ -58,7 +59,7 @@ const App = () => {
           </Router>
         </Suspense>
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 

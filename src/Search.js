@@ -1,19 +1,23 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import changeLocation from "./actionCreators/changeLocation";
+import changeAnimal from "./actionCreators/changeAnimal";
+import changeBreed from "./actionCreators/changeBreed";
+import changeTheme from "./actionCreators/changeTheme";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
 import "./search.css";
-import ThemeContext from "./ThemeContext";
 
 const Search = () => {
-  const [theme, setTheme] = useContext(ThemeContext);
-
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
   const [pets, setPets] = useState([]);
-  const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
+  const location = useSelector((state) => state.location);
+  const animal = useSelector((state) => state.animal);
+  const breed = useSelector((state) => state.breed);
+  const theme = useSelector((state) => state.theme);
   const [breeds] = useBreedList(animal);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     requestPets();
@@ -42,7 +46,7 @@ const Search = () => {
             id="location"
             value={location}
             placeholder="Location"
-            onChange={(e) => setLocation(e.target.value)}
+            onChange={(e) => dispatch(changeLocation(e.target.value))}
           />
         </label>
 
@@ -51,8 +55,8 @@ const Search = () => {
           <select
             id="animal"
             value={animal}
-            onChange={(e) => setAnimal(e.target.value)}
-            onBlur={(e) => setAnimal(e.target.value)}
+            onChange={(e) => dispatch(changeAnimal(e.target.value))}
+            onBlur={(e) => dispatch(changeAnimal(e.target.value))}
           >
             <option />
             {ANIMALS.map((animal) => (
@@ -69,8 +73,8 @@ const Search = () => {
             id="breed"
             disabled={!breeds.length}
             value={breed}
-            onChange={(e) => setBreed(e.target.value)}
-            onBlur={(e) => setBreed(e.target.value)}
+            onChange={(e) => dispatch(changeBreed(e.target.value))}
+            onBlur={(e) => dispatch(changeBreed(e.target.value))}
           >
             <option />
             {breeds.map((breed) => (
@@ -85,8 +89,8 @@ const Search = () => {
           Theme
           <select
             value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            onBlur={(e) => setTheme(e.target.value)}
+            onChange={(e) => dispatch(changeTheme(e.target.value))}
+            onBlur={(e) => dispatch(changeTheme(e.target.value))}
           >
             <option value="yellow">Yellow</option>
             <option value="pink">Pink</option>
